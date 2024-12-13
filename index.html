@@ -67,13 +67,77 @@
         }
     </style>
     <script>
-        function calculateResults() {
+               function calculateResults() {
             // Get form values
             const items = {
                 behavioralControl: ["q16", "q9", "q11", "q10", "q15", "q13", "q8", "q4"],
                 admittingPrejudices: ["q2", "q1", "q7", "q6"],
                 prejudiceFreeSelfPresentation: ["q5", "q3", "q14", "q12"]
             };
+
+            // Reverse scored items
+            const reverseItems = ["q10", "q5", "q3", "q14"];
+
+            const scores = {
+                behavioralControl: 0,
+                admittingPrejudices: 0,
+                prejudiceFreeSelfPresentation: 0
+            };
+
+            // Calculate scores
+            for (const [scale, questions] of Object.entries(items)) {
+                for (const question of questions) {
+                    const value = parseInt(document.querySelector(`input[name="${question}"]:checked`).value);
+                    scores[scale] += reverseItems.includes(question) ? 6 - value : value;
+                }
+            }
+
+            // Determine result categories
+            function categorize(score, thresholds) {
+                if (score >= thresholds.high) return "hoch";
+                if (score >= thresholds.medium) return "mittel";
+                return "niedrig";
+            }
+
+            const thresholds = {
+                behavioralControl: { high: 32, medium: 24 }, // Example thresholds
+                admittingPrejudices: { high: 18, medium: 12 },
+                prejudiceFreeSelfPresentation: { high: 18, medium: 12 }
+            };
+
+            const results = {
+                behavioralControl: categorize(scores.behavioralControl, thresholds.behavioralControl),
+                admittingPrejudices: categorize(scores.admittingPrejudices, thresholds.admittingPrejudices),
+                prejudiceFreeSelfPresentation: categorize(scores.prejudiceFreeSelfPresentation, thresholds.prejudiceFreeSelfPresentation)
+            };
+
+            // Display results with explanations
+            document.getElementById("results").innerHTML = `
+                <h3>Your Results:</h3>
+                <p><strong>Verhaltenskontrolle:</strong> ${results.behavioralControl} - ${
+                results.behavioralControl === "hoch"
+                    ? "Sie zeigen eine starke Motivation, sich vorurteilsfrei zu verhalten."
+                    : results.behavioralControl === "mittel"
+                    ? "Ihre Verhaltenskontrolle ist durchschnittlich. Es gibt Potenzial für Verbesserung."
+                    : "Ihre Verhaltenskontrolle ist niedrig. Sie könnten von Strategien zur Förderung vorurteilsfreien Verhaltens profitieren."
+            }</p>
+                <p><strong>Zugestehen eigener Vorurteile:</strong> ${results.admittingPrejudices} - ${
+                results.admittingPrejudices === "hoch"
+                    ? "Sie sind sehr reflektiert im Umgang mit eigenen Vorurteilen."
+                    : results.admittingPrejudices === "mittel"
+                    ? "Sie erkennen teilweise eigene Vorurteile an, können aber bewusster reflektieren."
+                    : "Es fällt Ihnen schwer, eigene Vorurteile zuzugeben. Reflexion könnte hilfreich sein."
+            }</p>
+                <p><strong>Vorurteilsfreie Selbstdarstellung:</strong> ${results.prejudiceFreeSelfPresentation} - ${
+                results.prejudiceFreeSelfPresentation === "hoch"
+                    ? "Sie legen großen Wert auf eine vorurteilsfreie Selbstdarstellung."
+                    : results.prejudiceFreeSelfPresentation === "mittel"
+                    ? "Ihre Selbstdarstellung zeigt Ansätze von vorurteilsfreier Haltung, kann jedoch gestärkt werden."
+                    : "Ihre Selbstdarstellung könnte bewusster auf Vorurteilsfreiheit ausgerichtet werden."
+            }</p>
+            `;
+        }
+
 
             // Reverse scored items
             const reverseItems = ["q10", "q5", "q3", "q14"];
