@@ -97,40 +97,111 @@
             scale3[0] = reverseScored[2];
 
             // Calculate totals
-            <input type="radio" name="q7" value="4">4
-            <input type="radio" name="q7" value="5">5
+            const totalScale1 = scale1.reduce((a, b) => a + b, 0);
+            const totalScale2 = scale2.reduce((a, b) => a + b, 0);
+            const totalScale3 = scale3.reduce((a, b) => a + b, 0);
+
+            // Display results
+            document.getElementById("results").innerHTML = `
+                <h3>Your Results:</h3>
+                <p><strong>Scale 1 Total:</strong> ${totalScale1}</p>
+                <p><strong>Scale 2 Total:</strong> ${totalScale2}</p>
+                <p><strong>Scale 3 Total:</strong> ${totalScale3}</p>
+            `;
+        }
+    </script>
+</head>
+<body>
+    <h1>Psychological Questionnaire</h1>
+    <form id="questionnaire">
+        <h2>Scale 1</h2>
+        <p>Q1: 
+            <label><input type="radio" name="q1" value="1">1</label>
+            <label><input type="radio" name="q1" value="2">2</label>
+            <label><input type="radio" name="q1" value="3">3</label>
+            <label><input type="radio" name="q1" value="4">4</label>
+            <label><input type="radio" name="q1" value="5">5</label>
         </p>
-        <p>Q8: <input type="radio" name="q8" value="1">1
-            <input type="radio" name="q8" value="2">2
-            <input type="radio" name="q8" value="3">3
-            <input type="radio" name="q8" value="4">4
-            <input type="radio" name="q8" value="5">5
+        <p>Q2: 
+            <label><input type="radio" name="q2" value="1">1</label>
+            <label><input type="radio" name="q2" value="2">2</label>
+            <label><input type="radio" name="q2" value="3">3</label>
+            <label><input type="radio" name="q2" value="4">4</label>
+            <label><input type="radio" name="q2" value="5">5</label>
+        </p>
+        <p>Q3: 
+            <label><input type="radio" name="q3" value="1">1</label>
+            <label><input type="radio" name="q3" value="2">2</label>
+            <label><input type="radio" name="q3" value="3">3</label>
+            <label><input type="radio" name="q3" value="4">4</label>
+            <label><input type="radio" name="q3" value="5">5</label>
+        </p>
+        <p>Q4: 
+            <label><input type="radio" name="q4" value="1">1</label>
+            <label><input type="radio" name="q4" value="2">2</label>
+            <label><input type="radio" name="q4" value="3">3</label>
+            <label><input type="radio" name="q4" value="4">4</label>
+            <label><input type="radio" name="q4" value="5">5</label>
+        </p>
+
+        <h2>Scale 2</h2>
+        <p>Q5: 
+            <label><input type="radio" name="q5" value="1">1</label>
+            <label><input type="radio" name="q5" value="2">2</label>
+            <label><input type="radio" name="q5" value="3">3</label>
+            <label><input type="radio" name="q5" value="4">4</label>
+            <label><input type="radio" name="q5" value="5">5</label>
+        </p>
+        <p>Q6: 
+            <label><input type="radio" name="q6" value="1">1</label>
+            <label><input type="radio" name="q6" value="2">2</label>
+            <label><input type="radio" name="q6" value="3">3</label>
+            <label><input type="radio" name="q6" value="4">4</label>
+            <label><input type="radio" name="q6" value="5">5</label>
+        </p>
+        <p>Q7: 
+            <label><input type="radio" name="q7" value="1">1</label>
+            <label><input type="radio" name="q7" value="2">2</label>
+            <label><input type="radio" name="q7" value="3">3</label>
+            <label><input type="radio" name="q7" value="4">4</label>
+            <label><input type="radio" name="q7" value="5">5</label>
+        </p>
+        <p>Q8: 
+            <label><input type="radio" name="q8" value="1">1</label>
+            <label><input type="radio" name="q8" value="2">2</label>
+            <label><input type="radio" name="q8" value="3">3</label>
+            <label><input type="radio" name="q8" value="4">4</label>
+            <label><input type="radio" name="q8" value="5">5</label>
         </p>
 
         <h2>Scale 3</h2>
-        <p>Q9: <input type="radio" name="q9" value="1">1
-            <input type="radio" name="q9" value="2">2
-            <input type="radio" name="q9" value="3">3
-            <input type="radio" name="q9" value="4">4
-            <input type="radio" name="q9" value="5">5
+        <p>Q9: 
+            <label><input type="radio" name="q9" value="1">1</label>
+            <label><input type="radio" name="q9" value="2">2</label>
+            <label><input type="radio" name="q9" value="3">3</label>
+            <label><input type="radio" name="q9" value="4">4</label>
+            <label><input type="radio" name="q9" value="5">5</label>
         </p>
-        <p>Q10: <input type="radio" name="q10" value="1">1
-            <input type="radio" name="q10" value="2">2
-            <input type="radio" name="q10" value="3">3
-            <input type="radio" name="q10" value="4">4
-            <input type="radio" name="q10" value="5">5
+        <p>Q10: 
+            <label><input type="radio" name="q10" value="1">1</label>
+            <label><input type="radio" name="q10" value="2">2</label>
+            <label><input type="radio" name="q10" value="3">3</label>
+            <label><input type="radio" name="q10" value="4">4</label>
+            <label><input type="radio" name="q10" value="5">5</label>
         </p>
-        <p>Q11: <input type="radio" name="q11" value="1">1
-            <input type="radio" name="q11" value="2">2
-            <input type="radio" name="q11" value="3">3
-            <input type="radio" name="q11" value="4">4
-            <input type="radio" name="q11" value="5">5
+        <p>Q11: 
+            <label><input type="radio" name="q11" value="1">1</label>
+            <label><input type="radio" name="q11" value="2">2</label>
+            <label><input type="radio" name="q11" value="3">3</label>
+            <label><input type="radio" name="q11" value="4">4</label>
+            <label><input type="radio" name="q11" value="5">5</label>
         </p>
-        <p>Q12: <input type="radio" name="q12" value="1">1
-            <input type="radio" name="q12" value="2">2
-            <input type="radio" name="q12" value="3">3
-            <input type="radio" name="q12" value="4">4
-            <input type="radio" name="q12" value="5">5
+        <p>Q12: 
+            <label><input type="radio" name="q12" value="1">1</label>
+            <label><input type="radio" name="q12" value="2">2</label>
+            <label><input type="radio" name="q12" value="3">3</label>
+            <label><input type="radio" name="q12" value="4">4</label>
+            <label><input type="radio" name="q12" value="5">5</label>
         </p>
 
         <button type="button" onclick="calculateResults()">Submit</button>
