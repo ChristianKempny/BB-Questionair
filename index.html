@@ -1,10 +1,68 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Psychological Questionnaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #results {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+        }
+    </style>
     <script>
         function calculateResults() {
             // Get form values
@@ -39,65 +97,6 @@
             scale3[0] = reverseScored[2];
 
             // Calculate totals
-            const totalScale1 = scale1.reduce((a, b) => a + b, 0);
-            const totalScale2 = scale2.reduce((a, b) => a + b, 0);
-            const totalScale3 = scale3.reduce((a, b) => a + b, 0);
-
-            // Display results
-            document.getElementById("results").innerHTML = `
-                <h3>Results:</h3>
-                <p>Scale 1 Total: ${totalScale1}</p>
-                <p>Scale 2 Total: ${totalScale2}</p>
-                <p>Scale 3 Total: ${totalScale3}</p>
-            `;
-        }
-    </script>
-</head>
-<body>
-    <h1>Psychological Questionnaire</h1>
-    <form id="questionnaire">
-        <h2>Scale 1</h2>
-        <p>Q1: <input type="radio" name="q1" value="1">1
-            <input type="radio" name="q1" value="2">2
-            <input type="radio" name="q1" value="3">3
-            <input type="radio" name="q1" value="4">4
-            <input type="radio" name="q1" value="5">5
-        </p>
-        <p>Q2: <input type="radio" name="q2" value="1">1
-            <input type="radio" name="q2" value="2">2
-            <input type="radio" name="q2" value="3">3
-            <input type="radio" name="q2" value="4">4
-            <input type="radio" name="q2" value="5">5
-        </p>
-        <p>Q3: <input type="radio" name="q3" value="1">1
-            <input type="radio" name="q3" value="2">2
-            <input type="radio" name="q3" value="3">3
-            <input type="radio" name="q3" value="4">4
-            <input type="radio" name="q3" value="5">5
-        </p>
-        <p>Q4: <input type="radio" name="q4" value="1">1
-            <input type="radio" name="q4" value="2">2
-            <input type="radio" name="q4" value="3">3
-            <input type="radio" name="q4" value="4">4
-            <input type="radio" name="q4" value="5">5
-        </p>
-
-        <h2>Scale 2</h2>
-        <p>Q5: <input type="radio" name="q5" value="1">1
-            <input type="radio" name="q5" value="2">2
-            <input type="radio" name="q5" value="3">3
-            <input type="radio" name="q5" value="4">4
-            <input type="radio" name="q5" value="5">5
-        </p>
-        <p>Q6: <input type="radio" name="q6" value="1">1
-            <input type="radio" name="q6" value="2">2
-            <input type="radio" name="q6" value="3">3
-            <input type="radio" name="q6" value="4">4
-            <input type="radio" name="q6" value="5">5
-        </p>
-        <p>Q7: <input type="radio" name="q7" value="1">1
-            <input type="radio" name="q7" value="2">2
-            <input type="radio" name="q7" value="3">3
             <input type="radio" name="q7" value="4">4
             <input type="radio" name="q7" value="5">5
         </p>
