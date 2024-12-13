@@ -66,47 +66,42 @@
     <script>
         function calculateResults() {
             // Get form values
-            const scale1 = [
-                parseInt(document.querySelector('input[name="q1"]:checked').value),
-                parseInt(document.querySelector('input[name="q2"]:checked').value),
-                parseInt(document.querySelector('input[name="q3"]:checked').value),
+            const behavioralControl = [
+                parseInt(document.querySelector('input[name="q16"]:checked').value),
+                parseInt(document.querySelector('input[name="q9"]:checked').value),
+                parseInt(document.querySelector('input[name="q11"]:checked').value),
+                6 - parseInt(document.querySelector('input[name="q10"]:checked').value), // Reverse scored
+                parseInt(document.querySelector('input[name="q15"]:checked').value),
+                parseInt(document.querySelector('input[name="q13"]:checked').value),
+                parseInt(document.querySelector('input[name="q8"]:checked').value),
                 parseInt(document.querySelector('input[name="q4"]:checked').value)
             ];
 
-            const scale2 = [
-                parseInt(document.querySelector('input[name="q5"]:checked').value),
-                parseInt(document.querySelector('input[name="q6"]:checked').value),
+            const admittingPrejudices = [
+                parseInt(document.querySelector('input[name="q2"]:checked').value),
+                parseInt(document.querySelector('input[name="q1"]:checked').value),
                 parseInt(document.querySelector('input[name="q7"]:checked').value),
-                parseInt(document.querySelector('input[name="q8"]:checked').value)
+                parseInt(document.querySelector('input[name="q6"]:checked').value)
             ];
 
-            const scale3 = [
-                parseInt(document.querySelector('input[name="q9"]:checked').value),
-                parseInt(document.querySelector('input[name="q10"]:checked').value),
-                parseInt(document.querySelector('input[name="q11"]:checked').value),
+            const prejudiceFreeSelfPresentation = [
+                6 - parseInt(document.querySelector('input[name="q5"]:checked').value), // Reverse scored
+                6 - parseInt(document.querySelector('input[name="q3"]:checked').value), // Reverse scored
+                6 - parseInt(document.querySelector('input[name="q14"]:checked').value), // Reverse scored
                 parseInt(document.querySelector('input[name="q12"]:checked').value)
             ];
 
-            // Reverse-score specific items
-            const reverseItems = [scale1[1], scale2[2], scale3[0]]; // Adjust indices as needed
-            const reverseScored = reverseItems.map(item => 6 - item); // Assuming a 1-5 scale
-
-            // Replace original values with reverse-scored values
-            scale1[1] = reverseScored[0];
-            scale2[2] = reverseScored[1];
-            scale3[0] = reverseScored[2];
-
             // Calculate totals
-            const totalScale1 = scale1.reduce((a, b) => a + b, 0);
-            const totalScale2 = scale2.reduce((a, b) => a + b, 0);
-            const totalScale3 = scale3.reduce((a, b) => a + b, 0);
+            const totalBehavioralControl = behavioralControl.reduce((a, b) => a + b, 0);
+            const totalAdmittingPrejudices = admittingPrejudices.reduce((a, b) => a + b, 0);
+            const totalPrejudiceFreeSelfPresentation = prejudiceFreeSelfPresentation.reduce((a, b) => a + b, 0);
 
             // Display results
             document.getElementById("results").innerHTML = `
                 <h3>Your Results:</h3>
-                <p><strong>Scale 1 Total:</strong> ${totalScale1}</p>
-                <p><strong>Scale 2 Total:</strong> ${totalScale2}</p>
-                <p><strong>Scale 3 Total:</strong> ${totalScale3}</p>
+                <p><strong>Behavioral Control Total:</strong> ${totalBehavioralControl}</p>
+                <p><strong>Admitting Prejudices Total:</strong> ${totalAdmittingPrejudices}</p>
+                <p><strong>Prejudice-Free Self-Presentation Total:</strong> ${totalPrejudiceFreeSelfPresentation}</p>
             `;
         }
     </script>
@@ -114,29 +109,57 @@
 <body>
     <h1>Psychological Questionnaire</h1>
     <form id="questionnaire">
-        <h2>Scale 1</h2>
-        <p>Q1: 
-            <label><input type="radio" name="q1" value="1">1</label>
-            <label><input type="radio" name="q1" value="2">2</label>
-            <label><input type="radio" name="q1" value="3">3</label>
-            <label><input type="radio" name="q1" value="4">4</label>
-            <label><input type="radio" name="q1" value="5">5</label>
+        <h2>Behavioral Control</h2>
+        <p>Q16: If I have thoughts or feelings that discriminate against others, I keep them to myself. 
+            <label><input type="radio" name="q16" value="1">1</label>
+            <label><input type="radio" name="q16" value="2">2</label>
+            <label><input type="radio" name="q16" value="3">3</label>
+            <label><input type="radio" name="q16" value="4">4</label>
+            <label><input type="radio" name="q16" value="5">5</label>
         </p>
-        <p>Q2: 
-            <label><input type="radio" name="q2" value="1">1</label>
-            <label><input type="radio" name="q2" value="2">2</label>
-            <label><input type="radio" name="q2" value="3">3</label>
-            <label><input type="radio" name="q2" value="4">4</label>
-            <label><input type="radio" name="q2" value="5">5</label>
+        <p>Q9: One should not say negative things about minorities in public. 
+            <label><input type="radio" name="q9" value="1">1</label>
+            <label><input type="radio" name="q9" value="2">2</label>
+            <label><input type="radio" name="q9" value="3">3</label>
+            <label><input type="radio" name="q9" value="4">4</label>
+            <label><input type="radio" name="q9" value="5">5</label>
         </p>
-        <p>Q3: 
-            <label><input type="radio" name="q3" value="1">1</label>
-            <label><input type="radio" name="q3" value="2">2</label>
-            <label><input type="radio" name="q3" value="3">3</label>
-            <label><input type="radio" name="q3" value="4">4</label>
-            <label><input type="radio" name="q3" value="5">5</label>
+        <p>Q11: One should not laugh at jokes about foreigners. 
+            <label><input type="radio" name="q11" value="1">1</label>
+            <label><input type="radio" name="q11" value="2">2</label>
+            <label><input type="radio" name="q11" value="3">3</label>
+            <label><input type="radio" name="q11" value="4">4</label>
+            <label><input type="radio" name="q11" value="5">5</label>
         </p>
-        <p>Q4: 
+        <p>Q10: I get angry with myself if I think or feel something that might be considered prejudiced. (R) 
+            <label><input type="radio" name="q10" value="1">1</label>
+            <label><input type="radio" name="q10" value="2">2</label>
+            <label><input type="radio" name="q10" value="3">3</label>
+            <label><input type="radio" name="q10" value="4">4</label>
+            <label><input type="radio" name="q10" value="5">5</label>
+        </p>
+        <p>Q15: It is very unpleasant for me to hurt someone, so I always try to be considerate of the feelings of others. 
+            <label><input type="radio" name="q15" value="1">1</label>
+            <label><input type="radio" name="q15" value="2">2</label>
+            <label><input type="radio" name="q15" value="3">3</label>
+            <label><input type="radio" name="q15" value="4">4</label>
+            <label><input type="radio" name="q15" value="5">5</label>
+        </p>
+        <p>Q13: It makes me angry when someone expresses prejudices about minorities. 
+            <label><input type="radio" name="q13" value="1">1</label>
+            <label><input type="radio" name="q13" value="2">2</label>
+            <label><input type="radio" name="q13" value="3">3</label>
+            <label><input type="radio" name="q13" value="4">4</label>
+            <label><input type="radio" name="q13" value="5">5</label>
+        </p>
+        <p>Q8: One should behave particularly fairly when dealing with someone who is likely to suffer frequently from prejudice. 
+            <label><input type="radio" name="q8" value="1">1</label>
+            <label><input type="radio" name="q8" value="2">2</label>
+            <label><input type="radio" name="q8" value="3">3</label>
+            <label><input type="radio" name="q8" value="4">4</label>
+            <label><input type="radio" name="q8" value="5">5</label>
+        </p>
+        <p>Q4: When talking about minorities, derogatory terms should be avoided. 
             <label><input type="radio" name="q4" value="1">1</label>
             <label><input type="radio" name="q4" value="2">2</label>
             <label><input type="radio" name="q4" value="3">3</label>
@@ -144,59 +167,59 @@
             <label><input type="radio" name="q4" value="5">5</label>
         </p>
 
-        <h2>Scale 2</h2>
-        <p>Q5: 
-            <label><input type="radio" name="q5" value="1">1</label>
-            <label><input type="radio" name="q5" value="2">2</label>
-            <label><input type="radio" name="q5" value="3">3</label>
-            <label><input type="radio" name="q5" value="4">4</label>
-            <label><input type="radio" name="q5" value="5">5</label>
+        <h2>Admitting Prejudices</h2>
+        <p>Q2: I make sure that my behavior is not influenced by prejudices. 
+            <label><input type="radio" name="q2" value="1">1</label>
+            <label><input type="radio" name="q2" value="2">2</label>
+            <label><input type="radio" name="q2" value="3">3</label>
+            <label><input type="radio" name="q2" value="4">4</label>
+            <label><input type="radio" name="q2" value="5">5</label>
         </p>
-        <p>Q6: 
-            <label><input type="radio" name="q6" value="1">1</label>
-            <label><input type="radio" name="q6" value="2">2</label>
-            <label><input type="radio" name="q6" value="3">3</label>
-            <label><input type="radio" name="q6" value="4">4</label>
-            <label><input type="radio" name="q6" value="5">5</label>
+        <p>Q1: One should never be guided by prejudices. 
+            <label><input type="radio" name="q1" value="1">1</label>
+            <label><input type="radio" name="q1" value="2">2</label>
+            <label><input type="radio" name="q1" value="3">3</label>
+            <label><input type="radio" name="q1" value="4">4</label>
+            <label><input type="radio" name="q1" value="5">5</label>
         </p>
-        <p>Q7: 
+        <p>Q7: One should become aware of one's own prejudices. 
             <label><input type="radio" name="q7" value="1">1</label>
             <label><input type="radio" name="q7" value="2">2</label>
             <label><input type="radio" name="q7" value="3">3</label>
             <label><input type="radio" name="q7" value="4">4</label>
             <label><input type="radio" name="q7" value="5">5</label>
         </p>
-        <p>Q8: 
-            <label><input type="radio" name="q8" value="1">1</label>
-            <label><input type="radio" name="q8" value="2">2</label>
-            <label><input type="radio" name="q8" value="3">3</label>
-            <label><input type="radio" name="q8" value="4">4</label>
-            <label><input type="radio" name="q8" value="5">5</label>
+        <p>Q6: Everyone has prejudices. The important thing is not to be guided by them. 
+            <label><input type="radio" name="q6" value="1">1</label>
+            <label><input type="radio" name="q6" value="2">2</label>
+            <label><input type="radio" name="q6" value="3">3</label>
+            <label><input type="radio" name="q6" value="4">4</label>
+            <label><input type="radio" name="q6" value="5">5</label>
         </p>
 
-        <h2>Scale 3</h2>
-        <p>Q9: 
-            <label><input type="radio" name="q9" value="1">1</label>
-            <label><input type="radio" name="q9" value="2">2</label>
-            <label><input type="radio" name="q9" value="3">3</label>
-            <label><input type="radio" name="q9" value="4">4</label>
-            <label><input type="radio" name="q9" value="5">5</label>
+        <h2>Prejudice-Free Self-Presentation</h2>
+        <p>Q5: It's not worth constantly worrying about whether you are behaving prejudiced towards someone. (R) 
+            <label><input type="radio" name="q5" value="1">1</label>
+            <label><input type="radio" name="q5" value="2">2</label>
+            <label><input type="radio" name="q5" value="3">3</label>
+            <label><input type="radio" name="q5" value="4">4</label>
+            <label><input type="radio" name="q5" value="5">5</label>
         </p>
-        <p>Q10: 
-            <label><input type="radio" name="q10" value="1">1</label>
-            <label><input type="radio" name="q10" value="2">2</label>
-            <label><input type="radio" name="q10" value="3">3</label>
-            <label><input type="radio" name="q10" value="4">4</label>
-            <label><input type="radio" name="q10" value="5">5</label>
+        <p>Q3: I don't care if someone believes I have prejudices against minorities. (R) 
+            <label><input type="radio" name="q3" value="1">1</label>
+            <label><input type="radio" name="q3" value="2">2</label>
+            <label><input type="radio" name="q3" value="3">3</label>
+            <label><input type="radio" name="q3" value="4">4</label>
+            <label><input type="radio" name="q3" value="5">5</label>
         </p>
-        <p>Q11: 
-            <label><input type="radio" name="q11" value="1">1</label>
-            <label><input type="radio" name="q11" value="2">2</label>
-            <label><input type="radio" name="q11" value="3">3</label>
-            <label><input type="radio" name="q11" value="4">4</label>
-            <label><input type="radio" name="q11" value="5">5</label>
+        <p>Q14: I think it is more important to say what you think than to constantly worry about whether you are offending someone. (R) 
+            <label><input type="radio" name="q14" value="1">1</label>
+            <label><input type="radio" name="q14" value="2">2</label>
+            <label><input type="radio" name="q14" value="3">3</label>
+            <label><input type="radio" name="q14" value="4">4</label>
+            <label><input type="radio" name="q14" value="5">5</label>
         </p>
-        <p>Q12: 
+        <p>Q12: I would be uncomfortable if someone thought I had prejudices against minorities. 
             <label><input type="radio" name="q12" value="1">1</label>
             <label><input type="radio" name="q12" value="2">2</label>
             <label><input type="radio" name="q12" value="3">3</label>
